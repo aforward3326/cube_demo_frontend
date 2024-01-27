@@ -1,0 +1,26 @@
+<div style="display: flex;
+    box-sizing: border-box;
+    padding: 0 16px;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
+    height: var(--mat-toolbar-standard-height);">
+    <div style="width: 30%">
+        <h1 class="example-app-name">Dashboard</h1>
+    </div>
+    <div class="top-nav-item-button" style=" width: 70%; justify-content: flex-end;">
+        <div class="top-nav-item-button" *ngFor="let nav of navItems; let navIndex = index">
+            @if (nav.children) {
+                <button class="top-nav-item" mat-button [matMenuTriggerFor]="navMenu">{{ nav.item }}</button>
+                <mat-menu #navMenu="matMenu" yPosition="below">
+                    <div *ngFor="let child of nav.children; let navIndex = index">
+                        <button mat-menu-item routerLink='{{child.path}}'>{{ child.item }}</button>
+                    </div>
+                </mat-menu>
+            } @else {
+                <button class="top-nav-item" mat-button routerLink='{{nav.path}}'> {{ nav.item }}</button>
+            }
+        </div>
+    </div>
+</div>

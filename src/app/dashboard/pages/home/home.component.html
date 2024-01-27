@@ -1,0 +1,9 @@
+<div>
+    <div>
+        <div>
+            <app-currency-date-filter [input]="filterData" [maxDate]="yesterday" [selectValue]="currencyUnitSelect" (valueChange)="onSetFilterDate($event)"/>
+            <app-currency-filter-table [currencyToday]="currencyToday"></app-currency-filter-table>
+        </div>
+
+    </div>
+</div>

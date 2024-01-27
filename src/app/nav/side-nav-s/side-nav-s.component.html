@@ -1,0 +1,34 @@
+<div *ngFor="let nav of navItems; let navIndex = index">
+    @if (nav.children) {
+        <div *ngIf="nav.icon">
+            <a mat-list-item (click)="dropdown(navIndex)">
+                <mat-icon>{{ nav.icon }}</mat-icon>
+            </a>
+        </div>
+        <div *ngIf="!nav.icon">
+            <a mat-list-item (click)="dropdown(navIndex)">
+                <p>{{ nav.item.charAt(0).toUpperCase() }}</p>
+            </a>
+        </div>
+        <div id="childItems{{navIndex}}" class="collapsible-content-s" style="margin-left: 0.4rem">
+            @for (child of nav.children; track child) {
+                <div *ngIf="child.icon">
+                    <a mat-list-item routerLink='{{child.path}}'>
+                        <mat-icon>{{ child.icon }}</mat-icon>
+                    </a>
+                </div>
+            }
+        </div>
+    } @else {
+        <div *ngIf="nav.icon">
+            <a mat-list-item routerLink="{{nav.path}}" (click)="dropdown(navIndex)">
+                <mat-icon>{{ nav.icon }}</mat-icon>
+            </a>
+        </div>
+        <div *ngIf="!nav.icon">
+            <a mat-list-item routerLink="{{nav.path}}" (click)="dropdown(navIndex)">
+                <p>{{ nav.item.charAt(0).toUpperCase() }}</p>
+            </a>
+        </div>
+    }
+</div>

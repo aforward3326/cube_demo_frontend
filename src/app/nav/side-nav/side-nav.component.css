@@ -1,0 +1,33 @@
+.side-nav-container {
+    width: 500px;
+    max-height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.side-nav-content {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.side-nav {
+    padding: 20px;
+}
+
+.collapsible-content {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease-out;
+}
+
+.block-center {
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.side-margin {
+    margin-left: -2rem;
+}

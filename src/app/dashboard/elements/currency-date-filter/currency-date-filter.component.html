@@ -1,0 +1,16 @@
+<div style="display: flex; flex-direction: row">
+    <app-date-picker
+            (dateChange)="onSetFilterDate($event)" [defaultDate]="value.date" [minDate]="min"
+            [maxDate]="max">
+    </app-date-picker>
+    <div>
+        <mat-form-field>
+            <mat-label>Select an option</mat-label>
+            <mat-select [(value)]="value.currencyUnit" (selectionChange)="onSetCurrencyUnit()">
+                @for (item of selectValue; track item.value) {
+                    <mat-option value="{{item.value}}">{{ item.label }}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+    </div>
+</div>

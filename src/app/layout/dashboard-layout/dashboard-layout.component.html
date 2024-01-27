@@ -1,0 +1,38 @@
+<div id='gridContainer' fxLayout="column" style="height: 100%">
+    <div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+        <mat-toolbar color="primary" class="example-toolbar">
+            <app-top-nav style="width: 100%" [navItems]="topNav"></app-top-nav>
+        </mat-toolbar>
+        <div style="display: flex;height: 100%">
+            <mat-sidenav-container class="example-sidenav-container"
+                                   [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+                <mat-sidenav id="sidenav" class="sidebar" opened #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                             [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+                    <mat-nav-list style="width: 200px">
+                        <app-side-nav [navItems]="fillerNav"></app-side-nav>
+                    </mat-nav-list>
+                </mat-sidenav>
+                <mat-sidenav-content style="height: 100%">
+                    <div style="display: flex; height: 100%">
+                        <mat-nav-list role="list" id="sidebar-nav" class="sidebar sidebar-1">
+                            <app-side-nav-s [navItems]="fillerNav"></app-side-nav-s>
+                        </mat-nav-list>
+                        <div class="sidebar" style="z-index: 99999; height: 50px; width: 25px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; margin-right: 1rem ">
+                            <button mat-icon-button style=" height: 50px; width: 25px; padding-left: 2px" (click)="snav.toggle();toggleOpen()">
+                                <mat-icon *ngIf="!changeIcon()">arrow_forward_ios</mat-icon>
+                                <mat-icon *ngIf="changeIcon()">arrow_back_ios</mat-icon>
+                            </button>
+                        </div>
+                        <router-outlet>
+
+                        </router-outlet>
+                    </div>
+                </mat-sidenav-content>
+
+            </mat-sidenav-container>
+        </div>
+        <mat-toolbar class="example-toolbar blocks footer block-center">
+            <h3 class="example-app-name">copy right</h3>
+        </mat-toolbar>
+    </div>
+</div>
